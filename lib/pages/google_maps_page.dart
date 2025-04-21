@@ -22,12 +22,14 @@ class GoogleMapPage extends StatelessWidget {
         onTap: (latLng) {
           ubicacionService.addMark(
               ubicacionService.ubicaciones.length + 1, latLng);
+          ubicacionService.nuevaLatitud = latLng.latitude;
+          ubicacionService.nuevaLongitud = latLng.latitude;
         },
         markers: ubicacionService.markers,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          _showAlertDialog(context);
+          _showAlertDialog(context, ubicacionService);
         },
         backgroundColor: Colors.grey,
         child: const Icon(
@@ -39,7 +41,7 @@ class GoogleMapPage extends StatelessWidget {
     );
   }
 
-  _showAlertDialog(BuildContext context) {
+  _showAlertDialog(BuildContext context, UbicacionService ubicacionService) {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -63,7 +65,9 @@ class GoogleMapPage extends StatelessWidget {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(4.0))),
                         labelText: 'Ubicacion'),
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      ubicacionService.nuevoNombre = value;
+                    },
                   ),
                 ],
               ),
