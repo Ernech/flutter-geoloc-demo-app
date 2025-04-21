@@ -20,15 +20,10 @@ class GoogleMapPage extends StatelessWidget {
           ubicacionService.controller.complete(controller);
         },
         onTap: (latLng) {
-          // setState(() {
-          //   _markers.add(Marker(
-          //     markerId: MarkerId('${_markers.length + 1}'),
-          //     position: LatLng(latLng.latitude, latLng.longitude),
-          //     infoWindow: const InfoWindow(title: 'La paz Bolivia'),
-          //   ));
-          // });
+          ubicacionService.addMark(
+              ubicacionService.ubicaciones.length + 1, latLng);
         },
-        //  markers: _markers,
+        markers: ubicacionService.markers,
       ),
     );
   }

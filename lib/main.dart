@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         initialRoute: 'ubicaciones-page',
         routes: {
           'ubicaciones-page': (_) => const UbicacionesPage(),
-          'mapa-page': (_) => const MapSamplePage(),
+          'mapa-page': (_) => const GoogleMapPage(),
         },
       ),
     );

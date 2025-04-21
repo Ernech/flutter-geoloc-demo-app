@@ -23,7 +23,9 @@ class UbicacionesPage extends StatelessWidget {
                 subtitle: const Text('Coordenadas: 12.22115515 - -58.21515115'),
               )),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, 'mapa-page');
+        },
         backgroundColor: Colors.grey,
         child: const Icon(
           Icons.add_location_alt_outlined,

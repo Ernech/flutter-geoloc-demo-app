@@ -6,7 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class UbicacionService with ChangeNotifier {
   final List<Ubicacion> _ubicaciones = [];
-  final Set<Marker> _markers = {};
+  Set<Marker> _markers = {};
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
   int _accion = 0;
@@ -14,6 +14,8 @@ class UbicacionService with ChangeNotifier {
   int get accion => _accion;
 
   List<Ubicacion> get ubicaciones => _ubicaciones;
+
+  Set<Marker> get markers => _markers;
 
   Completer<GoogleMapController> get controller => _controller;
 
