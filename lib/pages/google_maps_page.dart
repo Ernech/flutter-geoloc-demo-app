@@ -78,13 +78,21 @@ class GoogleMapPage extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: const Text('Abort'),
+              child: const Text('Cancelar'),
             ),
             TextButton(
               onPressed: () {
-                Navigator.pop(context);
+                //Navigator.pop(context);
+                if (ubicacionService.nuevoNombre.isEmpty ||
+                    ubicacionService.nuevaLatitud == 0.0 ||
+                    ubicacionService.nuevaLongitud == 0.0) {
+                  return;
+                }
+                print(
+                    '${ubicacionService.nuevoNombre} ${ubicacionService.nuevaLatitud} ${ubicacionService.nuevaLongitud}');
+                ubicacionService.reiniciarUbicacion();
               },
-              child: const Text('Confirm'),
+              child: const Text('Confirmar'),
             ),
           ],
         );
