@@ -7,14 +7,22 @@ class UbicacionesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Localizaciones'),
+        title: const Text(
+          'Ubicaciones',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.grey,
       ),
       body: const Center(
         child: Text('Ubicaciones map'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: const Icon(Icons.ad_units),
+        backgroundColor: Colors.grey,
+        child: const Icon(
+          Icons.add_location_alt_outlined,
+          color: Colors.white,
+        ),
       ),
     );
   }

@@ -5,6 +5,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class UbicacionService with ChangeNotifier {
   final List<Ubicacion> _ubicaciones = [];
   final Set<Marker> _markers = {};
+  int _accion = 0;
+
+  int get accion => _accion;
 
   List<Ubicacion> get ubicaciones => _ubicaciones;
 
@@ -19,6 +22,11 @@ class UbicacionService with ChangeNotifier {
       position: LatLng(latLng.latitude, latLng.longitude),
       infoWindow: const InfoWindow(title: 'La paz Bolivia'),
     ));
+    notifyListeners();
+  }
+
+  set accion(int accion) {
+    _accion = accion;
     notifyListeners();
   }
 }
