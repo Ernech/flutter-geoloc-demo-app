@@ -25,6 +25,15 @@ class GoogleMapPage extends StatelessWidget {
         },
         markers: ubicacionService.markers,
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.grey,
+        child: const Icon(
+          Icons.add_rounded,
+          color: Colors.white,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
