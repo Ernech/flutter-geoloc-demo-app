@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geoloc_demo_app/models/ubicacion.dart';
 import 'package:geoloc_demo_app/services/ubicacion_service.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -88,9 +89,14 @@ class GoogleMapPage extends StatelessWidget {
                     ubicacionService.nuevaLongitud == 0.0) {
                   return;
                 }
-                print(
-                    '${ubicacionService.nuevoNombre} ${ubicacionService.nuevaLatitud} ${ubicacionService.nuevaLongitud}');
+                Ubicacion nuevaUbicacion = Ubicacion(
+                    id: ubicacionService.ubicaciones.length + 1,
+                    latitud: ubicacionService.nuevaLatitud,
+                    longitud: ubicacionService.nuevaLatitud,
+                    nombre: ubicacionService.nuevoNombre);
+                ubicacionService.addUbicacion(nuevaUbicacion);
                 ubicacionService.reiniciarUbicacion();
+                Navigator.pop(context);
               },
               child: const Text('Confirmar'),
             ),

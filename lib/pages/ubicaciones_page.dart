@@ -16,15 +16,20 @@ class UbicacionesPage extends StatelessWidget {
         ),
         backgroundColor: Colors.grey,
       ),
-      body: ListView.builder(
-          shrinkWrap: true,
-          itemCount: 4,
-          itemBuilder: (context, index) => ListTile(
-                title: Text('Ubicacion - ${index + 1}'),
-                leading: const Icon(Icons.location_on),
-                trailing: const Icon(Icons.arrow_forward_ios),
-                subtitle: const Text('Coordenadas: 12.22115515 - -58.21515115'),
-              )),
+      body: ubicacionService.ubicaciones.isNotEmpty
+          ? ListView.builder(
+              shrinkWrap: true,
+              itemCount: ubicacionService.ubicaciones.length,
+              itemBuilder: (context, index) => ListTile(
+                    title: Text(ubicacionService.ubicaciones[index].nombre!),
+                    leading: const Icon(Icons.location_on),
+                    trailing: const Icon(Icons.arrow_forward_ios),
+                    subtitle: Text(
+                        'Lat: ${ubicacionService.ubicaciones[index].latitud!} - Lng: ${ubicacionService.ubicaciones[index].longitud!}'),
+                  ))
+          : const Center(
+              child: Text('No hay ubicaciones'),
+            ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, 'mapa-page');
