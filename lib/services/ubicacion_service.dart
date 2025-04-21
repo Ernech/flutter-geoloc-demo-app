@@ -6,9 +6,12 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class UbicacionService with ChangeNotifier {
   final List<Ubicacion> _ubicaciones = [];
-  Set<Marker> _markers = {};
+  final Set<Marker> _markers = {};
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
+  double _nuevaLatitud = 0.0;
+  double _nuevaLongitud = 0.0;
+  String _nuevoNombre = '';
   int _accion = 0;
 
   int get accion => _accion;
@@ -16,6 +19,12 @@ class UbicacionService with ChangeNotifier {
   List<Ubicacion> get ubicaciones => _ubicaciones;
 
   Set<Marker> get markers => _markers;
+
+  double get nuevaLatitud => _nuevaLatitud;
+
+  double get nuevaLongitud => _nuevaLongitud;
+
+  String get nuevoNombre => _nuevoNombre;
 
   Completer<GoogleMapController> get controller => _controller;
 
@@ -35,6 +44,28 @@ class UbicacionService with ChangeNotifier {
 
   set accion(int accion) {
     _accion = accion;
+    notifyListeners();
+  }
+
+  set nuevaLatitud(double latitud) {
+    _nuevaLatitud = latitud;
+    notifyListeners();
+  }
+
+  set nuevaLongitud(double longitud) {
+    _nuevaLongitud = longitud;
+    notifyListeners();
+  }
+
+  set nuevoNombre(String nombre) {
+    _nuevoNombre = nombre;
+    notifyListeners();
+  }
+
+  void reiniciarUbicacion() {
+    _nuevaLatitud = 0.0;
+    _nuevaLongitud = 0.0;
+    _nuevoNombre = '';
     notifyListeners();
   }
 }

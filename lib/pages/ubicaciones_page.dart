@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:geoloc_demo_app/services/ubicacion_service.dart';
+import 'package:provider/provider.dart';
 
 class UbicacionesPage extends StatelessWidget {
   const UbicacionesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ubicacionService = Provider.of<UbicacionService>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text(

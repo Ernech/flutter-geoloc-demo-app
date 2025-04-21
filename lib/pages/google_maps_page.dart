@@ -26,7 +26,9 @@ class GoogleMapPage extends StatelessWidget {
         markers: ubicacionService.markers,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          _showAlertDialog(context);
+        },
         backgroundColor: Colors.grey,
         child: const Icon(
           Icons.add_rounded,
@@ -34,6 +36,55 @@ class GoogleMapPage extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    );
+  }
+
+  _showAlertDialog(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Agregar Ubicacion'),
+          content: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text('Ingrese un nombre para la ubicacion'),
+                  const SizedBox(
+                    height: 3.0,
+                  ),
+                  TextField(
+                    obscureText: false,
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(4.0))),
+                        labelText: 'Ubicacion'),
+                    onChanged: (value) {},
+                  ),
+                ],
+              ),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Abort'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Confirm'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
