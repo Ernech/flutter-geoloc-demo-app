@@ -27,9 +27,13 @@ class UbicacionesPage extends StatelessWidget {
                     subtitle: Text(
                         'Lat: ${ubicacionService.ubicaciones[index].latitud!} - Lng: ${ubicacionService.ubicaciones[index].longitud!}'),
                     onTap: () {
+                      ubicacionService.cleanMarks();
                       ubicacionService.accion = 1;
                       ubicacionService.ubicacionSeleccionada =
                           ubicacionService.ubicaciones[index];
+
+                      ubicacionService.addMarkUbicacionSeleccionada();
+
                       Navigator.pushNamed(context, 'mapa-page');
                     },
                   ))
@@ -38,6 +42,7 @@ class UbicacionesPage extends StatelessWidget {
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          ubicacionService.cleanMarks();
           ubicacionService.accion = 2;
           Navigator.pushNamed(context, 'mapa-page');
         },

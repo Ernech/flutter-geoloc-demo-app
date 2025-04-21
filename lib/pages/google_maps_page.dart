@@ -18,9 +18,6 @@ class GoogleMapPage extends StatelessWidget {
           zoom: 14.4746,
         ),
         onMapCreated: (GoogleMapController controller) {
-          if (ubicacionService.accion == 1) {
-            ubicacionService.addMarkUbicacionSeleccionada();
-          }
           if (!ubicacionService.controller.isCompleted) {
             ubicacionService.controller.complete(controller);
           }
