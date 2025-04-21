@@ -13,9 +13,9 @@ class UbicacionService with ChangeNotifier {
     notifyListeners();
   }
 
-  void addMark(LatLng latLng) {
+  void addMark(int ubicacionId, LatLng latLng) {
     _markers.add(Marker(
-      markerId: MarkerId('${_markers.length + 1}'),
+      markerId: MarkerId('$ubicacionId'),
       position: LatLng(latLng.latitude, latLng.longitude),
       infoWindow: const InfoWindow(title: 'La paz Bolivia'),
     ));
