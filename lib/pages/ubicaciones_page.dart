@@ -13,9 +13,15 @@ class UbicacionesPage extends StatelessWidget {
         ),
         backgroundColor: Colors.grey,
       ),
-      body: const Center(
-        child: Text('Ubicaciones map'),
-      ),
+      body: ListView.builder(
+          shrinkWrap: true,
+          itemCount: 4,
+          itemBuilder: (context, index) => ListTile(
+                title: Text('Ubicacion - ${index + 1}'),
+                leading: const Icon(Icons.location_on),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                subtitle: const Text('Coordenadas: 12.22115515 - -58.21515115'),
+              )),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: Colors.grey,
