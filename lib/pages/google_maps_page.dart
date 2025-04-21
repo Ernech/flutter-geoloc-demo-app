@@ -18,27 +18,37 @@ class GoogleMapPage extends StatelessWidget {
           zoom: 14.4746,
         ),
         onMapCreated: (GoogleMapController controller) {
-          ubicacionService.controller.complete(controller);
+          if (ubicacionService.accion == 1) {
+            ubicacionService.addMarkUbicacionSeleccionada();
+          }
+          if (!ubicacionService.controller.isCompleted) {
+            ubicacionService.controller.complete(controller);
+          }
         },
-        onTap: (latLng) {
-          ubicacionService.addMark(
-              ubicacionService.ubicaciones.length + 1, latLng);
-          ubicacionService.nuevaLatitud = latLng.latitude;
-          ubicacionService.nuevaLongitud = latLng.latitude;
-        },
+        onTap: ubicacionService.accion == 1
+            ? null
+            : (latLng) {
+                ubicacionService.addMark(
+                    ubicacionService.ubicaciones.length + 1, latLng);
+                ubicacionService.nuevaLatitud = latLng.latitude;
+                ubicacionService.nuevaLongitud = latLng.latitude;
+                _showAlertDialog(context, ubicacionService);
+              },
         markers: ubicacionService.markers,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _showAlertDialog(context, ubicacionService);
-        },
-        backgroundColor: Colors.grey,
-        child: const Icon(
-          Icons.add_rounded,
-          color: Colors.white,
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: ubicacionService.accion == 1
+      //       ? null
+      //       : () {
+      //           _showAlertDialog(context, ubicacionService);
+      //         },
+      //   backgroundColor: Colors.grey,
+      //   child: const Icon(
+      //     Icons.add_rounded,
+      //     color: Colors.white,
+      //   ),
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 

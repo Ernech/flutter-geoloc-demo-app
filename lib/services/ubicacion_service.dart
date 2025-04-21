@@ -6,14 +6,14 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class UbicacionService with ChangeNotifier {
   final List<Ubicacion> _ubicaciones = [];
-  final Set<Marker> _markers = {};
+  Set<Marker> _markers = {};
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
   double _nuevaLatitud = 0.0;
   double _nuevaLongitud = 0.0;
   String _nuevoNombre = '';
-  int _accion = 0;
-
+  int _accion = 0; //1: Mostrar ubicacion en el mapa, 2: Agregar ubicacion
+  Ubicacion _ubicacionSeleccionada = Ubicacion();
   int get accion => _accion;
 
   List<Ubicacion> get ubicaciones => _ubicaciones;
@@ -26,6 +26,8 @@ class UbicacionService with ChangeNotifier {
 
   String get nuevoNombre => _nuevoNombre;
 
+  Ubicacion get ubicacionSeleccionada => _ubicacionSeleccionada;
+
   Completer<GoogleMapController> get controller => _controller;
 
   void addUbicacion(Ubicacion ubicacion) {
@@ -37,7 +39,17 @@ class UbicacionService with ChangeNotifier {
     _markers.add(Marker(
       markerId: MarkerId('$ubicacionId'),
       position: LatLng(latLng.latitude, latLng.longitude),
-      infoWindow: const InfoWindow(title: 'La paz Bolivia'),
+      infoWindow: const InfoWindow(title: ''),
+    ));
+    notifyListeners();
+  }
+
+  void addMarkUbicacionSeleccionada() {
+    _markers.add(Marker(
+      markerId: MarkerId('${_ubicacionSeleccionada.id}'),
+      position: LatLng(
+          _ubicacionSeleccionada.latitud!, _ubicacionSeleccionada.longitud!),
+      infoWindow: InfoWindow(title: '${_ubicacionSeleccionada.nombre}'),
     ));
     notifyListeners();
   }
@@ -62,10 +74,20 @@ class UbicacionService with ChangeNotifier {
     notifyListeners();
   }
 
+  set ubicacionSeleccionada(Ubicacion ubicacion) {
+    _ubicacionSeleccionada = ubicacion;
+    notifyListeners();
+  }
+
   void reiniciarUbicacion() {
     _nuevaLatitud = 0.0;
     _nuevaLongitud = 0.0;
     _nuevoNombre = '';
+    notifyListeners();
+  }
+
+  void cleanMarks() {
+    _markers = {};
     notifyListeners();
   }
 }

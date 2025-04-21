@@ -26,12 +26,19 @@ class UbicacionesPage extends StatelessWidget {
                     trailing: const Icon(Icons.arrow_forward_ios),
                     subtitle: Text(
                         'Lat: ${ubicacionService.ubicaciones[index].latitud!} - Lng: ${ubicacionService.ubicaciones[index].longitud!}'),
+                    onTap: () {
+                      ubicacionService.accion = 1;
+                      ubicacionService.ubicacionSeleccionada =
+                          ubicacionService.ubicaciones[index];
+                      Navigator.pushNamed(context, 'mapa-page');
+                    },
                   ))
           : const Center(
               child: Text('No hay ubicaciones'),
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          ubicacionService.accion = 2;
           Navigator.pushNamed(context, 'mapa-page');
         },
         backgroundColor: Colors.grey,
