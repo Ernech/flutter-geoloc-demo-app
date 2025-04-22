@@ -28,7 +28,7 @@ class GoogleMapPage extends StatelessWidget {
                 ubicacionService.addMark(
                     ubicacionService.ubicaciones.length + 1, latLng);
                 ubicacionService.nuevaLatitud = latLng.latitude;
-                ubicacionService.nuevaLongitud = latLng.latitude;
+                ubicacionService.nuevaLongitud = latLng.longitude;
                 _showAlertDialog(context, ubicacionService);
               },
         markers: ubicacionService.markers,
@@ -99,7 +99,7 @@ class GoogleMapPage extends StatelessWidget {
                 Ubicacion nuevaUbicacion = Ubicacion(
                     id: ubicacionService.ubicaciones.length + 1,
                     latitud: ubicacionService.nuevaLatitud,
-                    longitud: ubicacionService.nuevaLatitud,
+                    longitud: ubicacionService.nuevaLongitud,
                     nombre: ubicacionService.nuevoNombre);
                 ubicacionService.addUbicacion(nuevaUbicacion);
                 ubicacionService.reiniciarUbicacion();
