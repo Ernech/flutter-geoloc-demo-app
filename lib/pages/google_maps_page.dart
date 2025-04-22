@@ -14,13 +14,14 @@ class GoogleMapPage extends StatelessWidget {
       body: GoogleMap(
         mapType: MapType.hybrid,
         initialCameraPosition: const CameraPosition(
-          target: LatLng(37.42796133580664, -122.085749655962),
+          target: LatLng(0, 0),
           zoom: 14.4746,
         ),
         onMapCreated: (GoogleMapController controller) {
           if (!ubicacionService.controller.isCompleted) {
             ubicacionService.controller.complete(controller);
           }
+          ubicacionService.moverPosicionAlUsuario();
         },
         onTap: ubicacionService.accion == 1
             ? null
@@ -33,19 +34,6 @@ class GoogleMapPage extends StatelessWidget {
               },
         markers: ubicacionService.markers,
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: ubicacionService.accion == 1
-      //       ? null
-      //       : () {
-      //           _showAlertDialog(context, ubicacionService);
-      //         },
-      //   backgroundColor: Colors.grey,
-      //   child: const Icon(
-      //     Icons.add_rounded,
-      //     color: Colors.white,
-      //   ),
-      // ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 
