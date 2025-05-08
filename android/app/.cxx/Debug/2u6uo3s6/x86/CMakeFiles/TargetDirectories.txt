@@ -1,0 +1,2 @@
+C:/Users/evilela/Documents/PROYECTOS/flutter/flutter-geoloc-demo-app/android/app/.cxx/Debug/2u6uo3s6/x86/CMakeFiles/edit_cache.dir
+C:/Users/evilela/Documents/PROYECTOS/flutter/flutter-geoloc-demo-app/android/app/.cxx/Debug/2u6uo3s6/x86/CMakeFiles/rebuild_cache.dir

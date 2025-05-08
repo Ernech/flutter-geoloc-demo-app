@@ -100,11 +100,11 @@ class UbicacionService with ChangeNotifier {
   Future<void> moverPosicionAlUsuario() async {
     final GoogleMapController mapController = await _controller.future;
     final LatLng ubicacion = await obtenerCoordenadasActuales();
-    _markers.add(Marker(
-      markerId: const MarkerId('0ubicacion_defecto'),
-      position: ubicacion,
-      infoWindow: const InfoWindow(title: 'Usted se encuentra aqui'),
-    ));
+    // _markers.add(Marker(
+    //   markerId: const MarkerId('0ubicacion_defecto'),
+    //   position: ubicacion,
+    //   infoWindow: const InfoWindow(title: 'Usted se encuentra aqui'),
+    // ));
     mapController.animateCamera(
       CameraUpdate.newCameraPosition(
         CameraPosition(target: ubicacion, zoom: 16),

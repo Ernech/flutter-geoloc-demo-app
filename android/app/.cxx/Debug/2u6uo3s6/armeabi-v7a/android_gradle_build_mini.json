@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "C:\\Users\\evilela\\Documents\\flutter\\packages\\flutter_tools\\gradle\\src\\main\\groovy\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Users\\evilela\\AppData\\Local\\Android\\sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "C:\\Users\\evilela\\Documents\\PROYECTOS\\flutter\\flutter-geoloc-demo-app\\android\\app\\.cxx\\Debug\\2u6uo3s6\\armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\evilela\\AppData\\Local\\Android\\sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "C:\\Users\\evilela\\Documents\\PROYECTOS\\flutter\\flutter-geoloc-demo-app\\android\\app\\.cxx\\Debug\\2u6uo3s6\\armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

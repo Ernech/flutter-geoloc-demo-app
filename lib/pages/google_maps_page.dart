@@ -14,7 +14,7 @@ class GoogleMapPage extends StatelessWidget {
       body: GoogleMap(
         mapType: MapType.hybrid,
         initialCameraPosition: const CameraPosition(
-          target: LatLng(0, 0),
+          target: LatLng(-16.5461842, -68.0781138),
           zoom: 14.4746,
         ),
         onMapCreated: (GoogleMapController controller) {
